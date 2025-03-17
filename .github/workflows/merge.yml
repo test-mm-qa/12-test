@@ -1,0 +1,18 @@
+name: PR Merge Success Workflow
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  success:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        
+      - name: Always Succeed
+        run: echo "This is a successful PR merge check!"
+        # You can add any command here, but it's set to always succeed.
