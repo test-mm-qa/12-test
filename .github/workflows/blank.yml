@@ -1,0 +1,37 @@
+name: Failing Release Workflow
+
+# Trigger the workflow when a new release is published
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the project
+      - name: Build the project
+        run: npm run build
+
+      # Step 5: Intentional Failure Step
+      - name: Intentional failure
+        run: exit 1  # This command will immediately fail the job
+
+      # Step 6: This step will not run
+      - name: Post-build step (will not run)
+        run: echo "This step will not execute because of the intentional failure"
