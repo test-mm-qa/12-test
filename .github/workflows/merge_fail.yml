@@ -1,0 +1,19 @@
+name: PR Merge Fail Workflow
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  fail:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Force Fail
+        run: |
+          echo "This PR merge should fail!"
+          exit 1  # This will force the job to fail
