@@ -1,0 +1,12 @@
+this is 
+yet wnothe
+code
+
+class main{
+public static void main(String agrs[]){
+//main method
+System.out.println("hellow");
+}
+}
+
+and the end
